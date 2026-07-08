@@ -1,0 +1,817 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Akshaya M — Electrical Engineer & Future AI Innovator</title>
+<meta name="description" content="Akshaya M — Electrical & Electronics Engineering student, embedded systems developer, IoT innovator, and future AI engineer.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ivory: #F7F4EE;
+    --ivory-mid: #EDE8DC;
+    --navy: #0D1B2A;
+    --navy-mid: #162338;
+    --navy-light: #1E3150;
+    --gold: #C9A84C;
+    --gold-light: #E2C47A;
+    --gold-pale: #F0DFA8;
+    --stone: #8C8070;
+    --stone-light: #B8AFA0;
+    --stone-pale: #D8D0C4;
+    --serif: 'Cormorant Garamond', Georgia, serif;
+    --sans: 'DM Sans', system-ui, sans-serif;
+    --mono: 'DM Mono', monospace;
+    --ease: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; font-size: 16px; }
+  body { font-family: var(--sans); background: var(--ivory); color: var(--navy); overflow-x: hidden; cursor: none; }
+
+  #cursor { position: fixed; width: 10px; height: 10px; background: var(--gold); border-radius: 50%; pointer-events: none; z-index: 9999; transform: translate(-50%,-50%); transition: transform 0.1s var(--ease), width 0.3s var(--ease), height 0.3s var(--ease); }
+  #cursor-ring { position: fixed; width: 36px; height: 36px; border: 1px solid var(--gold); border-radius: 50%; pointer-events: none; z-index: 9998; transform: translate(-50%,-50%); opacity: 0.5; }
+
+  #progress { position: fixed; top: 0; left: 0; height: 2px; background: linear-gradient(90deg, var(--gold), var(--gold-light)); z-index: 1000; width: 0%; transition: width 0.1s linear; }
+
+  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 1.5rem 4rem; transition: background 0.4s var(--ease), padding 0.4s var(--ease), box-shadow 0.4s; }
+  nav.scrolled { background: rgba(13,27,42,0.96); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); padding: 1rem 4rem; box-shadow: 0 1px 0 rgba(201,168,76,0.2); }
+  .nav-logo { font-family: var(--serif); font-size: 1.4rem; font-weight: 500; color: var(--ivory); text-decoration: none; letter-spacing: 0.04em; }
+  .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+  .nav-links a { font-size: 0.75rem; font-weight: 400; letter-spacing: 0.14em; text-transform: uppercase; color: var(--stone-light); text-decoration: none; transition: color 0.3s; position: relative; }
+  .nav-links a::after { content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 1px; background: var(--gold); transition: width 0.3s var(--ease); }
+  .nav-links a:hover { color: var(--gold-light); }
+  .nav-links a:hover::after { width: 100%; }
+  .nav-cta { font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; padding: 0.55rem 1.4rem; border: 1px solid var(--gold); background: transparent; color: var(--gold); text-decoration: none; cursor: none; transition: background 0.3s, color 0.3s; }
+  .nav-cta:hover { background: var(--gold); color: var(--navy); }
+  .nav-menu-btn { display: none; background: none; border: none; cursor: none; padding: 4px; }
+  .nav-menu-btn span { display: block; width: 22px; height: 1px; background: var(--ivory); margin: 5px 0; transition: 0.3s; }
+
+  #loader { position: fixed; inset: 0; background: var(--navy); z-index: 9000; display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 1.5rem; transition: opacity 0.6s var(--ease), visibility 0.6s; }
+  #loader.hidden { opacity: 0; visibility: hidden; pointer-events: none; }
+  .loader-text { font-family: var(--serif); font-size: 2.5rem; color: var(--ivory); font-weight: 300; letter-spacing: 0.1em; overflow: hidden; }
+  .loader-text span { display: inline-block; transform: translateY(100%); animation: loaderReveal 0.8s var(--ease-out) 0.2s forwards; }
+  .loader-line { width: 0; height: 1px; background: var(--gold); animation: loaderLine 1.2s var(--ease) 0.3s forwards; }
+  .loader-sub { font-size: 0.68rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--stone); opacity: 0; animation: fadeIn 0.6s ease 0.9s forwards; }
+  @keyframes loaderReveal { to { transform: translateY(0); } }
+  @keyframes loaderLine { to { width: 220px; } }
+  @keyframes fadeIn { to { opacity: 1; } }
+
+  /* Hero — dark navy */
+  #hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; padding: 8rem 4rem 4rem; position: relative; overflow: hidden; background: var(--navy); }
+  .hero-bg { position: absolute; inset: 0; pointer-events: none; background: radial-gradient(ellipse 55% 60% at 75% 50%, var(--navy-light) 0%, transparent 65%); }
+  .hero-grid { position: absolute; inset: 0; pointer-events: none; background-image: linear-gradient(rgba(201,168,76,0.08) 1px, transparent 1px), linear-gradient(90deg, rgba(201,168,76,0.08) 1px, transparent 1px); background-size: 64px 64px; mask-image: radial-gradient(ellipse 90% 90% at 60% 50%, black 10%, transparent 80%); }
+  .hero-content { position: relative; max-width: 900px; }
+  .hero-label { font-size: 0.68rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.75rem; opacity: 0; transform: translateY(20px); animation: revealUp 0.8s var(--ease-out) 1.4s forwards; }
+  .hero-label::before { content: ''; display: block; width: 30px; height: 1px; background: var(--gold); }
+  .hero-name { font-family: var(--serif); font-size: clamp(4rem, 9vw, 8.5rem); font-weight: 300; line-height: 0.9; letter-spacing: -0.02em; color: var(--ivory); margin-bottom: 1.5rem; opacity: 0; transform: translateY(30px); animation: revealUp 1s var(--ease-out) 1.5s forwards; }
+  .hero-name em { font-style: italic; color: var(--gold-light); }
+  .hero-subtitle { font-size: 0.8rem; letter-spacing: 0.1em; color: var(--stone-light); text-transform: uppercase; margin-bottom: 2rem; font-weight: 400; opacity: 0; animation: fadeIn 0.8s ease 1.8s forwards; }
+  .hero-intro { font-size: 1.1rem; line-height: 1.75; color: var(--stone-light); max-width: 520px; margin-bottom: 3rem; font-weight: 300; opacity: 0; animation: fadeIn 0.8s ease 2s forwards; }
+  .hero-ctas { display: flex; gap: 1rem; flex-wrap: wrap; opacity: 0; animation: fadeIn 0.8s ease 2.2s forwards; }
+  .btn-primary { padding: 0.9rem 2.2rem; background: var(--gold); color: var(--navy); font-size: 0.75rem; letter-spacing: 0.14em; text-transform: uppercase; text-decoration: none; cursor: none; border: 1px solid var(--gold); transition: background 0.3s, transform 0.2s; display: inline-block; font-weight: 500; }
+  .btn-primary:hover { background: var(--gold-light); transform: translateY(-1px); }
+  .btn-secondary { padding: 0.9rem 2.2rem; background: transparent; color: var(--ivory); font-size: 0.75rem; letter-spacing: 0.14em; text-transform: uppercase; text-decoration: none; cursor: none; border: 1px solid rgba(201,168,76,0.35); transition: border-color 0.3s, color 0.3s, transform 0.2s; display: inline-block; }
+  .btn-secondary:hover { border-color: var(--gold); color: var(--gold-light); transform: translateY(-1px); }
+  .hero-scroll { position: absolute; bottom: 3rem; left: 50%; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; gap: 0.5rem; opacity: 0; animation: fadeIn 1s ease 2.5s forwards; }
+  .hero-scroll span { font-size: 0.62rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--stone); }
+  .scroll-line { width: 1px; height: 50px; background: rgba(201,168,76,0.25); position: relative; overflow: hidden; }
+  .scroll-line::after { content: ''; position: absolute; top: -100%; left: 0; width: 100%; height: 100%; background: var(--gold); animation: scrollDown 1.8s ease-in-out infinite; }
+  @keyframes scrollDown { to { top: 200%; } }
+  @keyframes revealUp { to { opacity: 1; transform: translateY(0); } }
+
+  /* About — ivory */
+  #about { background: var(--ivory); padding: 7rem 4rem; }
+  .section-label { font-size: 0.63rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--gold); margin-bottom: 1rem; display: flex; align-items: center; gap: 0.75rem; }
+  .section-label::before { content: ''; display: block; width: 20px; height: 1px; background: var(--gold); }
+  .section-title { font-family: var(--serif); font-size: clamp(2.2rem, 4vw, 3.5rem); font-weight: 300; line-height: 1.1; letter-spacing: -0.01em; margin-bottom: 1rem; color: var(--navy); }
+  .section-desc { font-size: 1rem; color: var(--stone); max-width: 500px; line-height: 1.75; font-weight: 300; }
+  .reveal { opacity: 0; transform: translateY(40px); transition: opacity 0.9s var(--ease-out), transform 0.9s var(--ease-out); }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+  .reveal-delay-1 { transition-delay: 0.1s; }
+  .reveal-delay-2 { transition-delay: 0.2s; }
+  .reveal-delay-3 { transition-delay: 0.3s; }
+  .reveal-delay-4 { transition-delay: 0.4s; }
+  .reveal-delay-5 { transition-delay: 0.5s; }
+
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; margin-top: 4rem; }
+
+  /* Creative portrait — circuit art */
+  .about-portrait { aspect-ratio: 3/4; background: var(--navy); position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; }
+  .about-portrait svg { width: 100%; height: 100%; position: absolute; inset: 0; }
+  .about-portrait::after { content: ''; position: absolute; inset: 0; border: 1px solid rgba(201,168,76,0.25); pointer-events: none; }
+
+  .about-text { padding-top: 1rem; }
+  .about-lead { font-family: var(--serif); font-size: 1.6rem; line-height: 1.4; font-weight: 300; margin-bottom: 2rem; color: var(--navy); }
+  .about-body { font-size: 0.92rem; color: var(--stone); line-height: 1.85; margin-bottom: 1.5rem; font-weight: 300; }
+  .about-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 2.5rem; }
+  .tag { font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.35rem 0.85rem; border: 1px solid var(--stone-pale); color: var(--stone); transition: border-color 0.3s, color 0.3s; }
+  .tag:hover { border-color: var(--gold); color: var(--navy); }
+  .about-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 2rem; }
+  .stat-card { padding: 1.5rem; background: var(--navy); border: 1px solid var(--navy-light); }
+  .stat-num { font-family: var(--serif); font-size: 2rem; font-weight: 300; display: block; margin-bottom: 0.3rem; color: var(--gold-light); }
+  .stat-label { font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--stone); }
+
+  /* Education */
+  #education { background: var(--ivory-mid); padding: 7rem 4rem; }
+  .timeline { margin-top: 4rem; position: relative; }
+  .timeline::before { content: ''; position: absolute; left: 12px; top: 0; bottom: 0; width: 1px; background: var(--stone-pale); }
+  .timeline-item { display: flex; gap: 3rem; margin-bottom: 3.5rem; position: relative; }
+  .timeline-dot { width: 25px; height: 25px; border-radius: 50%; border: 1px solid var(--stone-pale); background: var(--ivory-mid); flex-shrink: 0; display: flex; align-items: center; justify-content: center; position: relative; z-index: 1; margin-top: 0.2rem; transition: background 0.3s, border-color 0.3s; }
+  .timeline-dot::after { content: ''; width: 7px; height: 7px; border-radius: 50%; background: var(--gold); }
+  .timeline-item:hover .timeline-dot { background: var(--navy); border-color: var(--gold); }
+  .timeline-content { flex: 1; padding-bottom: 1rem; border-bottom: 1px solid var(--stone-pale); }
+  .timeline-year { font-size: 0.68rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.5rem; }
+  .timeline-school { font-family: var(--serif); font-size: 1.5rem; font-weight: 400; margin-bottom: 0.3rem; color: var(--navy); }
+  .timeline-degree { font-size: 0.88rem; color: var(--stone); margin-bottom: 0.5rem; }
+  .timeline-score { font-size: 0.72rem; letter-spacing: 0.1em; display: inline-block; padding: 0.25rem 0.75rem; background: var(--navy); color: var(--gold-light); border: 1px solid var(--navy-light); }
+
+  /* Skills — navy */
+  #skills { background: var(--navy); color: var(--ivory); padding: 7rem 4rem; }
+  #skills .section-title { color: var(--ivory); }
+  #skills .section-desc { color: var(--stone-light); }
+  .skills-grid { margin-top: 4rem; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1px; background: var(--navy-light); }
+  .skill-category { padding: 2rem; background: var(--navy); transition: background 0.3s; }
+  .skill-category:hover { background: var(--navy-mid); }
+  .skill-cat-label { font-size: 0.63rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.2rem; padding-bottom: 0.8rem; border-bottom: 1px solid var(--navy-light); }
+  .skill-items { display: flex; flex-direction: column; gap: 0.6rem; }
+  .skill-item { display: flex; align-items: center; justify-content: space-between; font-size: 0.84rem; color: var(--stone-light); padding: 0.4rem 0; border-bottom: 1px solid rgba(255,255,255,0.04); transition: color 0.3s; }
+  .skill-item:hover { color: var(--gold-light); }
+  .skill-dot { width: 4px; height: 4px; border-radius: 50%; background: var(--gold); flex-shrink: 0; opacity: 0.6; }
+
+  /* Projects */
+  #projects { background: var(--ivory); padding: 7rem 4rem; }
+  .projects-grid { margin-top: 4rem; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5px; background: var(--stone-pale); }
+  .project-card { background: var(--ivory); padding: 2.5rem; transition: background 0.4s; cursor: none; position: relative; overflow: hidden; }
+  .project-card::before { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, var(--gold), var(--gold-light)); transform: scaleX(0); transform-origin: left; transition: transform 0.4s var(--ease); }
+  .project-card:hover { background: var(--ivory-mid); }
+  .project-card:hover::before { transform: scaleX(1); }
+  .project-num { font-family: var(--mono); font-size: 0.68rem; color: var(--gold); margin-bottom: 1.5rem; display: block; letter-spacing: 0.1em; }
+  .project-title { font-family: var(--serif); font-size: 1.45rem; font-weight: 400; margin-bottom: 1rem; line-height: 1.25; color: var(--navy); }
+  .project-desc { font-size: 0.86rem; color: var(--stone); line-height: 1.75; margin-bottom: 1.5rem; font-weight: 300; }
+  .project-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 1.5rem; }
+  .project-tag { font-size: 0.63rem; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.2rem 0.65rem; background: var(--ivory-mid); color: var(--stone); border: 1px solid var(--stone-pale); transition: background 0.3s, color 0.3s, border-color 0.3s; }
+  .project-card:hover .project-tag { background: var(--navy); color: var(--gold-light); border-color: var(--navy-light); }
+  .project-link { font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); text-decoration: none; display: flex; align-items: center; gap: 0.5rem; transition: gap 0.3s; }
+  .project-link:hover { gap: 0.8rem; }
+
+  /* Experience */
+  #experience { background: var(--ivory-mid); padding: 7rem 4rem; }
+  .exp-card { margin-top: 4rem; padding: 3rem; background: var(--navy); border: 1px solid var(--navy-light); display: grid; grid-template-columns: 1fr 1px 2fr; gap: 3rem; align-items: start; }
+  .exp-meta {}
+  .exp-company { font-family: var(--serif); font-size: 1.6rem; font-weight: 400; margin-bottom: 0.5rem; color: var(--ivory); }
+  .exp-role { font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.3rem; }
+  .exp-year { font-family: var(--mono); font-size: 0.72rem; color: var(--stone); }
+  .exp-divider { background: var(--navy-light); align-self: stretch; }
+  .exp-desc { font-size: 0.92rem; color: var(--stone-light); line-height: 1.85; font-weight: 300; }
+  .exp-desc p { margin-bottom: 1rem; }
+  .exp-highlights { margin-top: 1.5rem; display: flex; flex-direction: column; gap: 0; }
+  .exp-highlight { font-size: 0.82rem; color: var(--stone); padding: 0.7rem 0; border-bottom: 1px solid var(--navy-light); display: flex; gap: 0.75rem; align-items: flex-start; }
+  .exp-highlight::before { content: '—'; color: var(--gold); flex-shrink: 0; font-family: var(--mono); }
+
+  /* Certificates */
+  #certificates { background: var(--ivory); padding: 7rem 4rem; }
+  .cert-grid { margin-top: 4rem; display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1px; background: var(--stone-pale); }
+  .cert-card { background: var(--ivory); padding: 2rem; position: relative; overflow: hidden; transition: background 0.3s; }
+  .cert-card:hover { background: var(--ivory-mid); }
+  .cert-icon { width: 40px; height: 40px; border: 1px solid var(--stone-pale); display: flex; align-items: center; justify-content: center; margin-bottom: 1.2rem; font-family: var(--mono); font-size: 0.62rem; color: var(--gold); letter-spacing: 0.05em; transition: background 0.3s, border-color 0.3s; }
+  .cert-card:hover .cert-icon { background: var(--navy); border-color: var(--navy); }
+  .cert-name { font-size: 0.96rem; font-weight: 500; margin-bottom: 0.4rem; line-height: 1.3; color: var(--navy); }
+  .cert-issuer { font-size: 0.72rem; color: var(--stone); letter-spacing: 0.05em; }
+
+  /* Achievements — navy */
+  #achievements { background: var(--navy); padding: 7rem 4rem; color: var(--ivory); }
+  #achievements .section-title { color: var(--ivory); }
+  .achieve-grid { margin-top: 4rem; display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1px; background: var(--navy-light); }
+  .achieve-card { padding: 2.5rem; background: var(--navy); transition: background 0.3s; position: relative; overflow: hidden; }
+  .achieve-card::before { content: attr(data-num); position: absolute; top: 1rem; right: 1.5rem; font-family: var(--serif); font-size: 3rem; font-weight: 300; color: rgba(201,168,76,0.07); pointer-events: none; }
+  .achieve-card:hover { background: var(--navy-mid); }
+  .achieve-icon { width: 6px; height: 6px; border-radius: 50%; background: var(--gold); margin-bottom: 1.5rem; }
+  .achieve-title { font-family: var(--serif); font-size: 1.2rem; font-weight: 400; color: var(--ivory); margin-bottom: 0.5rem; }
+  .achieve-desc { font-size: 0.8rem; color: var(--stone); line-height: 1.65; }
+
+  /* Leadership */
+  #leadership { background: var(--ivory-mid); padding: 7rem 4rem; }
+  .leadership-content { margin-top: 4rem; display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+  .leadership-text .lead-quote { font-family: var(--serif); font-size: 1.8rem; font-weight: 300; line-height: 1.4; margin-bottom: 2rem; color: var(--navy); }
+  .leadership-text .lead-quote em { font-style: italic; color: var(--gold); }
+  .leadership-text p { font-size: 0.92rem; color: var(--stone); line-height: 1.85; margin-bottom: 1rem; font-weight: 300; }
+  .leadership-list { list-style: none; display: flex; flex-direction: column; gap: 0; }
+  .leadership-list li { padding: 1.1rem 0; border-bottom: 1px solid var(--stone-pale); display: flex; align-items: flex-start; gap: 1rem; font-size: 0.86rem; color: var(--stone); transition: color 0.3s; }
+  .leadership-list li:hover { color: var(--navy); }
+  .leadership-list li::before { content: ''; width: 5px; height: 5px; border-radius: 50%; background: var(--gold); flex-shrink: 0; margin-top: 0.55rem; }
+
+  /* Contact */
+  #contact { background: var(--navy); color: var(--ivory); padding: 7rem 4rem; }
+  #contact .section-title { color: var(--ivory); }
+  .contact-grid { margin-top: 4rem; display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; }
+  .contact-intro { font-size: 0.92rem; color: var(--stone-light); line-height: 1.85; font-weight: 300; max-width: 340px; margin-bottom: 2rem; }
+  .contact-links { display: flex; flex-direction: column; gap: 0; }
+  .contact-link { display: flex; align-items: center; justify-content: space-between; padding: 1rem 0; border-bottom: 1px solid var(--navy-light); text-decoration: none; color: var(--stone-light); font-size: 0.84rem; transition: color 0.3s, padding-left 0.3s; }
+  .contact-link:hover { color: var(--gold-light); padding-left: 0.5rem; }
+  .contact-link span { font-size: 0.63rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--stone); }
+  .contact-link:hover span { color: var(--gold); }
+  .contact-form { display: flex; flex-direction: column; gap: 1.5rem; }
+  .form-field input, .form-field textarea { width: 100%; background: var(--navy-mid); border: 1px solid var(--navy-light); color: var(--ivory); padding: 1rem; font-family: var(--sans); font-size: 0.88rem; outline: none; resize: none; transition: border-color 0.3s; }
+  .form-field input::placeholder, .form-field textarea::placeholder { color: var(--stone); }
+  .form-field input:focus, .form-field textarea:focus { border-color: var(--gold); }
+  .btn-send { padding: 1rem 2.5rem; background: var(--gold); color: var(--navy); font-size: 0.75rem; letter-spacing: 0.14em; text-transform: uppercase; border: none; cursor: none; align-self: flex-start; transition: background 0.3s, transform 0.2s; font-weight: 500; }
+  .btn-send:hover { background: var(--gold-light); transform: translateY(-1px); }
+
+  footer { padding: 2.5rem 4rem; background: #080E16; display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--navy-light); flex-wrap: wrap; gap: 1rem; }
+  footer p { font-size: 0.7rem; letter-spacing: 0.08em; color: var(--stone); }
+  .footer-brand { font-family: var(--serif); font-size: 1rem; color: var(--gold-light); }
+  .footer-links { display: flex; gap: 1.5rem; }
+  .footer-links a { font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--stone); text-decoration: none; transition: color 0.3s; }
+  .footer-links a:hover { color: var(--gold); }
+
+  #back-top { position: fixed; bottom: 2rem; right: 2rem; z-index: 100; width: 44px; height: 44px; border: 1px solid rgba(201,168,76,0.35); background: var(--navy); display: flex; align-items: center; justify-content: center; cursor: none; opacity: 0; transform: translateY(10px); transition: opacity 0.3s, transform 0.3s, background 0.3s, border-color 0.3s; font-size: 0.9rem; text-decoration: none; color: var(--gold); }
+  #back-top.visible { opacity: 1; transform: translateY(0); }
+  #back-top:hover { background: var(--gold); color: var(--navy); border-color: var(--gold); }
+
+  .mobile-nav { display: none; position: fixed; inset: 0; background: var(--navy); z-index: 99; flex-direction: column; align-items: center; justify-content: center; gap: 2rem; }
+  .mobile-nav.open { display: flex; }
+  .mobile-nav a { font-family: var(--serif); font-size: 2rem; color: var(--ivory); text-decoration: none; font-weight: 300; transition: color 0.3s; }
+  .mobile-nav a:hover { color: var(--gold-light); }
+  .mobile-close { position: absolute; top: 1.5rem; right: 2rem; background: none; border: none; font-size: 1.5rem; cursor: none; color: var(--stone-light); }
+
+  @media (max-width: 900px) {
+    nav { padding: 1.2rem 2rem; }
+    nav.scrolled { padding: 0.9rem 2rem; }
+    .nav-links, .nav-cta { display: none; }
+    .nav-menu-btn { display: block; }
+    section, #about, #education, #skills, #projects, #experience, #certificates, #achievements, #leadership, #contact { padding: 5rem 2rem; }
+    #hero { padding: 6rem 2rem 4rem; }
+    .about-grid { grid-template-columns: 1fr; gap: 3rem; }
+    .contact-grid { grid-template-columns: 1fr; }
+    .exp-card { grid-template-columns: 1fr; gap: 1.5rem; }
+    .exp-divider { display: none; }
+    .leadership-content { grid-template-columns: 1fr; }
+    footer { padding: 2rem; flex-direction: column; align-items: flex-start; }
+    .projects-grid { grid-template-columns: 1fr; }
+    #cursor, #cursor-ring { display: none; }
+    body { cursor: auto; }
+    a, button { cursor: pointer; }
+  }
+  @media (max-width: 600px) {
+    .hero-name { font-size: 3.5rem; }
+    .about-stats { grid-template-columns: 1fr 1fr; }
+    .skills-grid { grid-template-columns: 1fr; }
+    .achieve-grid { grid-template-columns: 1fr; }
+    .cert-grid { grid-template-columns: 1fr; }
+    .hero-ctas { flex-direction: column; }
+    .btn-primary, .btn-secondary { text-align: center; }
+  }
+</style>
+</head>
+<body>
+<div id="progress"></div>
+<div id="cursor"></div>
+<div id="cursor-ring"></div>
+
+<div id="loader">
+  <div class="loader-text"><span>Akshaya M</span></div>
+  <div class="loader-line"></div>
+  <div class="loader-sub">Portfolio Loading</div>
+</div>
+
+<a href="#hero" id="back-top">↑</a>
+
+<nav id="navbar">
+  <a href="#hero" class="nav-logo">AM</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#achievements">Achievements</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="#contact" class="nav-cta">Get in touch</a>
+  <button class="nav-menu-btn" id="menuBtn" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="mobile-nav" id="mobileNav">
+  <button class="mobile-close" id="closeMenu">✕</button>
+  <a href="#about" onclick="closeMobile()">About</a>
+  <a href="#skills" onclick="closeMobile()">Skills</a>
+  <a href="#projects" onclick="closeMobile()">Projects</a>
+  <a href="#experience" onclick="closeMobile()">Experience</a>
+  <a href="#achievements" onclick="closeMobile()">Achievements</a>
+  <a href="#contact" onclick="closeMobile()">Contact</a>
+</div>
+
+<!-- Hero -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-content">
+    <div class="hero-label">EEE · AI · Embedded Systems</div>
+    <h1 class="hero-name">Akshaya <em>M</em></h1>
+    <div class="hero-subtitle">Electrical &amp; Electronics Engineer · Future AI Innovator · Embedded Systems Developer</div>
+    <p class="hero-intro">Building intelligent systems through embedded engineering, IoT innovation, and next-generation technology solutions.</p>
+    <div class="hero-ctas">
+      <a href="#projects" class="btn-primary">View Projects</a>
+      <a href="#contact" class="btn-secondary">Download Resume</a>
+      <a href="#contact" class="btn-secondary">Contact Me</a>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    <div class="scroll-line"></div>
+    <span>Scroll</span>
+  </div>
+</section>
+
+<!-- About -->
+<section id="about">
+  <div class="section-label reveal">Profile</div>
+  <h2 class="section-title reveal reveal-delay-1">Engineering the<br><em style="font-style:italic;font-family:var(--serif);color:var(--gold)">Future</em></h2>
+  <div class="about-grid">
+
+    <!-- Creative SVG portrait -->
+    <div class="about-portrait reveal reveal-delay-2">
+      <svg viewBox="0 0 400 530" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+        <!-- Background -->
+        <rect width="400" height="530" fill="#0D1B2A"/>
+        <!-- Subtle grid -->
+        <defs>
+          <pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse">
+            <path d="M 32 0 L 0 0 0 32" fill="none" stroke="rgba(201,168,76,0.07)" stroke-width="0.5"/>
+          </pattern>
+        </defs>
+        <rect width="400" height="530" fill="url(#grid)"/>
+
+        <!-- Circuit trace lines -->
+        <g stroke="rgba(201,168,76,0.18)" stroke-width="1" fill="none">
+          <polyline points="40,100 40,200 100,200 100,260 160,260"/>
+          <polyline points="360,130 360,230 300,230 300,290 240,290"/>
+          <polyline points="40,400 40,350 120,350 120,320 180,320"/>
+          <polyline points="360,410 360,360 280,360 280,320 220,320"/>
+          <line x1="60" y1="200" x2="60" y2="250"/>
+          <line x1="80" y1="200" x2="80" y2="240"/>
+          <line x1="340" y1="230" x2="340" y2="270"/>
+          <line x1="320" y1="230" x2="320" y2="265"/>
+          <!-- horizontal accent lines -->
+          <line x1="0" y1="80" x2="160" y2="80"/>
+          <line x1="240" y1="80" x2="400" y2="80"/>
+          <line x1="0" y1="450" x2="155" y2="450"/>
+          <line x1="245" y1="450" x2="400" y2="450"/>
+        </g>
+
+        <!-- Circuit nodes -->
+        <g fill="rgba(201,168,76,0.35)">
+          <circle cx="40" cy="200" r="4"/>
+          <circle cx="100" cy="200" r="3"/>
+          <circle cx="100" cy="260" r="3"/>
+          <circle cx="360" cy="230" r="4"/>
+          <circle cx="300" cy="230" r="3"/>
+          <circle cx="300" cy="290" r="3"/>
+          <circle cx="40" cy="350" r="3"/>
+          <circle cx="120" cy="350" r="3"/>
+          <circle cx="360" cy="360" r="3"/>
+          <circle cx="280" cy="360" r="3"/>
+        </g>
+        <!-- Glowing nodes -->
+        <circle cx="40" cy="200" r="6" fill="none" stroke="rgba(201,168,76,0.25)" stroke-width="1"/>
+        <circle cx="360" cy="230" r="6" fill="none" stroke="rgba(201,168,76,0.25)" stroke-width="1"/>
+
+        <!-- Central abstract human silhouette — elegant minimal -->
+        <!-- Body glow -->
+        <ellipse cx="200" cy="310" rx="80" ry="110" fill="rgba(30,49,80,0.5)"/>
+        <!-- Shoulders & torso outline -->
+        <path d="M130,290 Q120,340 130,420 Q160,440 200,442 Q240,440 270,420 Q280,340 270,290 Q245,275 200,270 Q155,275 130,290Z" fill="rgba(22,35,56,0.8)" stroke="rgba(201,168,76,0.2)" stroke-width="0.8"/>
+        <!-- Head -->
+        <ellipse cx="200" cy="210" rx="52" ry="60" fill="rgba(22,35,56,0.9)" stroke="rgba(201,168,76,0.25)" stroke-width="1"/>
+        <!-- Face light — soft highlight -->
+        <ellipse cx="200" cy="200" rx="30" ry="38" fill="rgba(201,168,76,0.04)"/>
+        <!-- Neck -->
+        <rect x="185" y="265" width="30" height="20" rx="4" fill="rgba(22,35,56,0.9)" stroke="rgba(201,168,76,0.15)" stroke-width="0.8"/>
+
+        <!-- Circuit overlay on figure -->
+        <g stroke="rgba(201,168,76,0.22)" stroke-width="0.8" fill="none">
+          <line x1="200" y1="240" x2="200" y2="180"/>
+          <line x1="175" y1="220" x2="225" y2="220"/>
+          <circle cx="200" cy="220" r="8" stroke-width="0.8"/>
+          <!-- shoulder circuits -->
+          <line x1="148" y1="300" x2="120" y2="300"/>
+          <line x1="252" y1="300" x2="280" y2="300"/>
+          <circle cx="148" cy="300" r="3" fill="rgba(201,168,76,0.3)" stroke="none"/>
+          <circle cx="252" cy="300" r="3" fill="rgba(201,168,76,0.3)" stroke="none"/>
+          <!-- chest circuit -->
+          <polyline points="175,340 175,360 200,360 225,360 225,340"/>
+          <circle cx="200" cy="360" r="4" fill="rgba(201,168,76,0.2)" stroke="rgba(201,168,76,0.4)" stroke-width="0.8"/>
+        </g>
+
+        <!-- Name text at bottom -->
+        <text x="200" y="490" text-anchor="middle" font-family="'Cormorant Garamond',Georgia,serif" font-size="22" font-weight="300" fill="rgba(201,168,76,0.7)" letter-spacing="6">AKSHAYA M</text>
+        <text x="200" y="510" text-anchor="middle" font-family="'DM Mono',monospace" font-size="8" fill="rgba(140,128,112,0.6)" letter-spacing="3">EEE · AI · EMBEDDED</text>
+
+        <!-- Corner decorations -->
+        <g stroke="rgba(201,168,76,0.3)" stroke-width="1" fill="none">
+          <polyline points="20,20 20,48 48,48"/>
+          <polyline points="380,20 380,48 352,48"/>
+          <polyline points="20,510 20,482 48,482"/>
+          <polyline points="380,510 380,482 352,482"/>
+        </g>
+
+        <!-- Animated pulse ring (CSS anim) -->
+        <circle cx="200" cy="220" r="55" fill="none" stroke="rgba(201,168,76,0.12)" stroke-width="1">
+          <animate attributeName="r" from="52" to="72" dur="3s" repeatCount="indefinite"/>
+          <animate attributeName="opacity" from="0.4" to="0" dur="3s" repeatCount="indefinite"/>
+        </circle>
+        <circle cx="200" cy="220" r="55" fill="none" stroke="rgba(201,168,76,0.08)" stroke-width="1">
+          <animate attributeName="r" from="52" to="90" dur="3s" begin="1.5s" repeatCount="indefinite"/>
+          <animate attributeName="opacity" from="0.3" to="0" dur="3s" begin="1.5s" repeatCount="indefinite"/>
+        </circle>
+      </svg>
+    </div>
+
+    <div class="about-text reveal reveal-delay-3">
+      <p class="about-lead">An ambitious engineer turning ideas into intelligent systems — one circuit, one algorithm, one innovation at a time.</p>
+      <p class="about-body">Akshaya M is a B.E. Electrical and Electronics Engineering student at Sri Eshwar College of Engineering, consistently recognized as a department topper. Her work bridges the physical and digital — from designing sensor-driven IoT systems to exploring AI-integrated embedded architectures.</p>
+      <p class="about-body">With a hands-on engineering mindset and genuine curiosity for next-generation technologies, she pursues embedded systems, electric vehicles, and intelligent automation not as academic exercises, but as real-world imperatives.</p>
+      <div class="about-tags">
+        <span class="tag">Embedded Systems</span>
+        <span class="tag">IoT</span>
+        <span class="tag">AI Engineering</span>
+        <span class="tag">Electric Vehicles</span>
+        <span class="tag">Automation</span>
+        <span class="tag">Circuit Design</span>
+      </div>
+      <p class="about-body" style="font-style:italic;font-family:var(--serif);font-size:1.1rem;color:var(--navy);">"Selected as Department Secretary — leading with integrity, communicating with clarity, and mentoring with purpose."</p>
+      <div class="about-stats">
+        <div class="stat-card">
+          <span class="stat-num">8.72</span>
+          <span class="stat-label">CGPA</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-num">2×</span>
+          <span class="stat-label">Dept. Topper</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-num">4+</span>
+          <span class="stat-label">Projects</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Education -->
+<section id="education">
+  <div class="section-label reveal">Academic Journey</div>
+  <h2 class="section-title reveal reveal-delay-1">Education</h2>
+  <p class="section-desc reveal reveal-delay-2">A foundation built on rigorous academics, consistent performance, and intellectual discipline.</p>
+  <div class="timeline">
+    <div class="timeline-item reveal reveal-delay-2">
+      <div class="timeline-dot"></div>
+      <div class="timeline-content">
+        <div class="timeline-year">2024 — 2028</div>
+        <div class="timeline-school">Sri Eshwar College of Engineering</div>
+        <div class="timeline-degree">B.E. Electrical and Electronics Engineering</div>
+        <span class="timeline-score">CGPA 8.72</span>
+      </div>
+    </div>
+    <div class="timeline-item reveal reveal-delay-3">
+      <div class="timeline-dot"></div>
+      <div class="timeline-content">
+        <div class="timeline-year">HSC</div>
+        <div class="timeline-school">Don Bosco School of Excellence</div>
+        <div class="timeline-degree">Higher Secondary Certificate</div>
+        <span class="timeline-score">84%</span>
+      </div>
+    </div>
+    <div class="timeline-item reveal reveal-delay-4">
+      <div class="timeline-dot"></div>
+      <div class="timeline-content">
+        <div class="timeline-year">SSLC</div>
+        <div class="timeline-school">Don Bosco School of Excellence</div>
+        <div class="timeline-degree">Secondary School Leaving Certificate</div>
+        <span class="timeline-score">94.3%</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Skills -->
+<section id="skills">
+  <div class="section-label reveal">Expertise</div>
+  <h2 class="section-title reveal reveal-delay-1">Technical Skills</h2>
+  <p class="section-desc reveal reveal-delay-2">A precise toolkit spanning embedded hardware, systems programming, circuit design, and IoT integration.</p>
+  <div class="skills-grid reveal reveal-delay-3">
+    <div class="skill-category">
+      <div class="skill-cat-label">Programming</div>
+      <div class="skill-items">
+        <div class="skill-item">C <div class="skill-dot"></div></div>
+        <div class="skill-item">Arduino Programming <div class="skill-dot"></div></div>
+        <div class="skill-item">Embedded C <div class="skill-dot"></div></div>
+        <div class="skill-item">Python <div class="skill-dot"></div></div>
+        <div class="skill-item">SQL <div class="skill-dot"></div></div>
+      </div>
+    </div>
+    <div class="skill-category">
+      <div class="skill-cat-label">Embedded &amp; Electronics</div>
+      <div class="skill-items">
+        <div class="skill-item">ESP32 <div class="skill-dot"></div></div>
+        <div class="skill-item">Raspberry Pi Pico <div class="skill-dot"></div></div>
+        <div class="skill-item">8051 Microcontroller <div class="skill-dot"></div></div>
+        <div class="skill-item">PIC16F877A <div class="skill-dot"></div></div>
+        <div class="skill-item">Sensor Interfacing <div class="skill-dot"></div></div>
+        <div class="skill-item">Digital Electronics <div class="skill-dot"></div></div>
+      </div>
+    </div>
+    <div class="skill-category">
+      <div class="skill-cat-label">Circuit Design</div>
+      <div class="skill-items">
+        <div class="skill-item">Network Analysis <div class="skill-dot"></div></div>
+        <div class="skill-item">PCB Design <div class="skill-dot"></div></div>
+        <div class="skill-item">Semiconductor Devices <div class="skill-dot"></div></div>
+        <div class="skill-item">Embedded Debugging <div class="skill-dot"></div></div>
+      </div>
+    </div>
+    <div class="skill-category">
+      <div class="skill-cat-label">Tools &amp; Platforms</div>
+      <div class="skill-items">
+        <div class="skill-item">Arduino IDE <div class="skill-dot"></div></div>
+        <div class="skill-item">Blynk <div class="skill-dot"></div></div>
+        <div class="skill-item">KiCad <div class="skill-dot"></div></div>
+        <div class="skill-item">Proteus <div class="skill-dot"></div></div>
+        <div class="skill-item">VS Code <div class="skill-dot"></div></div>
+      </div>
+    </div>
+    <div class="skill-category">
+      <div class="skill-cat-label">Technologies</div>
+      <div class="skill-items">
+        <div class="skill-item">IoT Systems <div class="skill-dot"></div></div>
+        <div class="skill-item">Wi-Fi Communication <div class="skill-dot"></div></div>
+        <div class="skill-item">Cloud Monitoring <div class="skill-dot"></div></div>
+        <div class="skill-item">Automation Systems <div class="skill-dot"></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Projects -->
+<section id="projects">
+  <div class="section-label reveal">Work</div>
+  <h2 class="section-title reveal reveal-delay-1">Selected Projects</h2>
+  <p class="section-desc reveal reveal-delay-2">Engineering solutions that bridge hardware intelligence with real-world impact.</p>
+  <div class="projects-grid reveal reveal-delay-3">
+
+    <div class="project-card">
+      <span class="project-num">01 / 04</span>
+      <h3 class="project-title">Line Following Robot</h3>
+      <p class="project-desc">Designed and built an autonomous line-following robot using IR sensors and a microcontroller-based differential drive system. The robot detects and tracks a defined path through real-time sensor feedback and motor control logic — demonstrating core principles of embedded systems, control theory, and autonomous navigation.</p>
+      <div class="project-tags">
+        <span class="project-tag">Embedded C</span>
+        <span class="project-tag">IR Sensors</span>
+        <span class="project-tag">Motor Control</span>
+        <span class="project-tag">Microcontroller</span>
+        <span class="project-tag">Robotics</span>
+      </div>
+      <a href="#" class="project-link">View Details</a>
+    </div>
+
+    <div class="project-card">
+      <span class="project-num">02 / 04</span>
+      <h3 class="project-title">Electric Bike Design Challenge</h3>
+      <p class="project-desc">Served as Electrical Lead in a competitive EV design challenge. Responsible for battery systems architecture, motor interfacing, and controller integration — translating power electronics theory into a functional electric vehicle prototype under real engineering constraints.</p>
+      <div class="project-tags">
+        <span class="project-tag">EV Systems</span>
+        <span class="project-tag">Power Electronics</span>
+        <span class="project-tag">Motor Control</span>
+        <span class="project-tag">Battery Systems</span>
+      </div>
+      <a href="#" class="project-link">View Details</a>
+    </div>
+
+    <div class="project-card">
+      <span class="project-num">03 / 04</span>
+      <h3 class="project-title">Wireless Water Tank Automated System</h3>
+      <p class="project-desc">An IoT-based wireless automation system using ESP32 for real-time water level monitoring and remote pump control. Integrated with Blynk for cloud-based alerts and remote access — eliminating manual intervention through intelligent threshold-driven relay logic.</p>
+      <div class="project-tags">
+        <span class="project-tag">ESP32</span>
+        <span class="project-tag">IoT</span>
+        <span class="project-tag">Blynk</span>
+        <span class="project-tag">Relay Control</span>
+        <span class="project-tag">Cloud</span>
+      </div>
+      <a href="#" class="project-link">View Details</a>
+    </div>
+
+    <div class="project-card">
+      <span class="project-num">04 / 04</span>
+      <h3 class="project-title">Smart Battery Level Indicator</h3>
+      <p class="project-desc">Designed a precision battery monitoring circuit using comparator logic and voltage divider networks, providing real-time charge level indication with clean analog front-end design and LED readout integration.</p>
+      <div class="project-tags">
+        <span class="project-tag">Analog Electronics</span>
+        <span class="project-tag">Circuit Design</span>
+        <span class="project-tag">Comparator Logic</span>
+        <span class="project-tag">Prototyping</span>
+      </div>
+      <a href="#" class="project-link">View Details</a>
+    </div>
+
+  </div>
+</section>
+
+<!-- Experience -->
+<section id="experience">
+  <div class="section-label reveal">Field Experience</div>
+  <h2 class="section-title reveal reveal-delay-1">Experience</h2>
+  <div class="exp-card reveal reveal-delay-2">
+    <div class="exp-meta">
+      <div class="exp-company">Roots Industries India</div>
+      <div class="exp-role">Industrial Visit · Internship</div>
+      <div class="exp-year">2026</div>
+    </div>
+    <div class="exp-divider"></div>
+    <div class="exp-desc">
+      <p>Visited the Roots Industries India Private Limited horn manufacturing plant — one of India's leading manufacturers of acoustic warning devices — gaining direct exposure to the complete product lifecycle of electromagnetic and air horns, from raw material processing through precision assembly to quality certification and dispatch.</p>
+      <p>Observed the plant's electrical systems infrastructure at scale: transformer stations, motor-driven conveyor assemblies, and PLC-controlled automation lines managing high-volume production runs. Developed a sharp understanding of how circuit-level electrical design translates into ruggedized, mass-manufactured industrial components.</p>
+      <div class="exp-highlights">
+        <div class="exp-highlight">Studied electromagnetic horn assembly — coil winding, armature calibration, and acoustic output testing processes</div>
+        <div class="exp-highlight">Observed PLC and relay-based control systems managing automated assembly and quality inspection lines</div>
+        <div class="exp-highlight">Engaged with electrical integration of high-current motor drives and industrial power distribution systems</div>
+        <div class="exp-highlight">Gained insight into tolerance-driven manufacturing standards applied to safety-critical automotive components</div>
+        <div class="exp-highlight">Bridged academic circuit theory with real-world production engineering practices in an ISO-certified facility</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Certificates -->
+<section id="certificates">
+  <div class="section-label reveal">Credentials</div>
+  <h2 class="section-title reveal reveal-delay-1">Certificates</h2>
+  <div class="cert-grid reveal reveal-delay-2">
+    <div class="cert-card">
+      <div class="cert-icon">DT</div>
+      <div class="cert-name">Design Thinking — A Primer</div>
+      <div class="cert-issuer">Innovation Fundamentals</div>
+    </div>
+    <div class="cert-card">
+      <div class="cert-icon">DC</div>
+      <div class="cert-name">Digital Circuits</div>
+      <div class="cert-issuer">NPTEL · IIT Certified</div>
+    </div>
+    <div class="cert-card">
+      <div class="cert-icon">CP</div>
+      <div class="cert-name">C Programming</div>
+      <div class="cert-issuer">Udemy · Verified</div>
+    </div>
+    <div class="cert-card">
+      <div class="cert-icon">DS</div>
+      <div class="cert-name">Data Structures &amp; Algorithms</div>
+      <div class="cert-issuer">Mastering using C/C++ · Udemy</div>
+    </div>
+  </div>
+</section>
+
+<!-- Achievements -->
+<section id="achievements">
+  <div class="section-label reveal">Recognition</div>
+  <h2 class="section-title reveal reveal-delay-1">Achievements</h2>
+  <div class="achieve-grid reveal reveal-delay-2">
+    <div class="achieve-card" data-num="01">
+      <div class="achieve-icon"></div>
+      <div class="achieve-title">Department Topper 2024–25</div>
+      <div class="achieve-desc">Achieved highest academic standing in the EEE department during the first year of undergraduate study.</div>
+    </div>
+    <div class="achieve-card" data-num="02">
+      <div class="achieve-icon"></div>
+      <div class="achieve-title">Department Topper 2025–26</div>
+      <div class="achieve-desc">Sustained top academic performance into the second year — demonstrating consistency and intellectual depth.</div>
+    </div>
+    <div class="achieve-card" data-num="03">
+      <div class="achieve-icon"></div>
+      <div class="achieve-title">Department Secretary</div>
+      <div class="achieve-desc">Selected among peers for department leadership, overseeing communication, events, and student coordination.</div>
+    </div>
+    <div class="achieve-card" data-num="04">
+      <div class="achieve-icon"></div>
+      <div class="achieve-title">Hackathon Participant</div>
+      <div class="achieve-desc">Active participant in engineering hackathons, translating technical skills into rapid prototyping and problem-solving under pressure.</div>
+    </div>
+    <div class="achieve-card" data-num="05">
+      <div class="achieve-icon"></div>
+      <div class="achieve-title">Technical &amp; Interview Panels</div>
+      <div class="achieve-desc">Demonstrated leadership by participating in departmental interview processes and technical evaluation committees.</div>
+    </div>
+    <div class="achieve-card" data-num="06">
+      <div class="achieve-icon"></div>
+      <div class="achieve-title">EV Design Challenge — Electrical Lead</div>
+      <div class="achieve-desc">Led the electrical design workstream in a competitive electric vehicle challenge under real engineering constraints.</div>
+    </div>
+  </div>
+</section>
+
+<!-- Leadership -->
+<section id="leadership">
+  <div class="section-label reveal">Character</div>
+  <h2 class="section-title reveal reveal-delay-1">Leadership &amp; Vision</h2>
+  <div class="leadership-content">
+    <div class="leadership-text reveal reveal-delay-2">
+      <p class="lead-quote">"Engineering excellence is only part of the story — <em>the other half is how you lead, communicate, and inspire.</em>"</p>
+      <p>Akshaya's leadership philosophy is grounded in clarity, empathy, and accountability. As Department Secretary, she has navigated the intersection of technical expertise and human coordination — ensuring students feel heard, events run with precision, and the department's voice is represented with confidence.</p>
+      <p>She mentors junior students, participates in selection interviews, and speaks with composure in high-pressure environments. Her communication style is articulate, composed, and strategically aware — qualities that distinguish future technology leaders.</p>
+    </div>
+    <div class="reveal reveal-delay-3">
+      <ul class="leadership-list">
+        <li>Department Secretary — elected by peers, trusted by faculty</li>
+        <li>Mentors junior students in technical and academic challenges</li>
+        <li>Represents department in interviews and evaluation processes</li>
+        <li>Strong public speaking and presentation confidence</li>
+        <li>Cross-functional team coordination across projects</li>
+        <li>Event planning and execution for departmental programs</li>
+        <li>Leads with a collaborative, systems-thinking mindset</li>
+        <li>Translates complex ideas into clear, accessible language</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- Contact -->
+<section id="contact">
+  <div class="section-label reveal">Connect</div>
+  <h2 class="section-title reveal reveal-delay-1">Get in Touch</h2>
+  <div class="contact-grid">
+    <div class="reveal reveal-delay-2">
+      <p class="contact-intro">Open to internships, research collaborations, hackathon partnerships, and meaningful technical conversations.</p>
+      <div class="contact-links">
+        <a href="mailto:akshayam@email.com" class="contact-link"><span>Email</span> akshayam@email.com</a>
+        <a href="https://linkedin.com" class="contact-link"><span>LinkedIn</span> linkedin.com/in/akshayam</a>
+        <a href="https://github.com" class="contact-link"><span>GitHub</span> github.com/akshayam</a>
+        <a href="tel:+919047339547" class="contact-link"><span>Phone</span> +91 90473 39547</a>
+      </div>
+    </div>
+    <div class="contact-form reveal reveal-delay-3">
+      <div class="form-field"><input type="text" placeholder="Your Name"></div>
+      <div class="form-field"><input type="email" placeholder="Email Address"></div>
+      <div class="form-field"><textarea rows="5" placeholder="Your Message"></textarea></div>
+      <button class="btn-send">Send Message</button>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-brand">Akshaya M</div>
+  <p>© 2025 · B.E. EEE · Sri Eshwar College of Engineering</p>
+  <div class="footer-links">
+    <a href="#about">About</a>
+    <a href="#projects">Projects</a>
+    <a href="#contact">Contact</a>
+  </div>
+</footer>
+
+<script>
+window.addEventListener('load', () => { setTimeout(() => document.getElementById('loader').classList.add('hidden'), 1800); });
+
+const cursor = document.getElementById('cursor');
+const ring = document.getElementById('cursor-ring');
+let mx=0,my=0,rx=0,ry=0;
+document.addEventListener('mousemove', e => { mx=e.clientX; my=e.clientY; cursor.style.left=mx+'px'; cursor.style.top=my+'px'; });
+function animateRing(){rx+=(mx-rx)*0.12;ry+=(my-ry)*0.12;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(animateRing);}
+animateRing();
+document.querySelectorAll('a,button').forEach(el=>{
+  el.addEventListener('mouseenter',()=>{cursor.style.transform='translate(-50%,-50%) scale(2.5)';cursor.style.background='transparent';cursor.style.border='1px solid #C9A84C';ring.style.width='12px';ring.style.height='12px';});
+  el.addEventListener('mouseleave',()=>{cursor.style.transform='translate(-50%,-50%) scale(1)';cursor.style.background='var(--gold)';cursor.style.border='none';ring.style.width='36px';ring.style.height='36px';});
+});
+
+const progressBar=document.getElementById('progress');
+window.addEventListener('scroll',()=>{const h=document.documentElement;progressBar.style.width=(h.scrollTop/(h.scrollHeight-h.clientHeight)*100)+'%';});
+
+const navbar=document.getElementById('navbar');
+window.addEventListener('scroll',()=>navbar.classList.toggle('scrolled',window.scrollY>60));
+
+const backTop=document.getElementById('back-top');
+window.addEventListener('scroll',()=>backTop.classList.toggle('visible',window.scrollY>400));
+
+const reveals=document.querySelectorAll('.reveal');
+const obs=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');}),{threshold:0.12,rootMargin:'0px 0px -40px 0px'});
+reveals.forEach(el=>obs.observe(el));
+
+document.getElementById('menuBtn').addEventListener('click',()=>document.getElementById('mobileNav').classList.add('open'));
+document.getElementById('closeMenu').addEventListener('click',closeMobile);
+function closeMobile(){document.getElementById('mobileNav').classList.remove('open');}
+
+document.querySelector('.btn-send').addEventListener('click',()=>alert('Thank you! Akshaya will get back to you shortly.'));
+
+// Particles
+const canvas=document.createElement('canvas');
+canvas.style.cssText='position:absolute;inset:0;pointer-events:none;opacity:0.25;';
+document.getElementById('hero').appendChild(canvas);
+const ctx=canvas.getContext('2d');
+let W,H,particles=[];
+function resize(){W=canvas.width=canvas.offsetWidth;H=canvas.height=canvas.offsetHeight;}
+resize(); window.addEventListener('resize',resize);
+for(let i=0;i<50;i++)particles.push({x:Math.random()*1200,y:Math.random()*900,r:Math.random()*1.8+0.3,vx:(Math.random()-.5)*0.25,vy:(Math.random()-.5)*0.25,o:Math.random()*0.6+0.2});
+function draw(){ctx.clearRect(0,0,W,H);particles.forEach(p=>{p.x+=p.vx;p.y+=p.vy;if(p.x<0)p.x=W;if(p.x>W)p.x=0;if(p.y<0)p.y=H;if(p.y>H)p.y=0;ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);ctx.fillStyle=`rgba(201,168,76,${p.o})`;ctx.fill();});requestAnimationFrame(draw);}
+draw();
+</script>
+</body>
+</html>
